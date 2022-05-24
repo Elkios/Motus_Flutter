@@ -18,7 +18,7 @@ class WordHive {
 
   Future<void> insertWord(Word word) async {
     await _box?.add(word);
-    //await _box?.close();
+    await _box?.close();
     return;
   }
 }

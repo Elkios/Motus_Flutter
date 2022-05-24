@@ -1,11 +1,10 @@
-import 'package:motus_flutter/data/entities/word/word.dart';
-import 'package:motus_flutter/data/entities/word/word.dart';
+import 'package:motus_flutter/data/entities/trash/trash.dart';
 
 import 'package:hive/hive.dart';
 
 class TrashHive {
   static TrashHive? _instance;
-  static Box<Word>? _box;
+  static Box<Trash>? _box;
 
   static Future<TrashHive> getInstance() async {
     if (_instance == null) {
@@ -17,4 +16,12 @@ class TrashHive {
   }
 
   TrashHive._();
+
+  Future<void> insertTrash(Trash trash) async {
+    await _box?.add(trash);
+    await _box?.close();
+    return;
+  }
+
+
 }
