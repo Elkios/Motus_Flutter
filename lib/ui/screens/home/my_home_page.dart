@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:motus_flutter/data/entities/word.dart';
-import 'package:motus_flutter/ui/screens/home/my_home_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -24,9 +22,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    MyHomeViewModel viewModel = context.read<MyHomeViewModel>();
-    viewModel.insertWord(Word(1, 2));
-    viewModel.loadDictionary();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -35,16 +30,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Consumer<MyHomeViewModel>(
-              builder: (context, viewModel, child) {
-                if (viewModel.list == null) {
-                  return const CircularProgressIndicator();
-                }
-                return Text(
-                  viewModel.list != null ? viewModel.list.first : '',
-                );
-              },
-            ),
+            Text(
+              'Hello World!'
+            )
           ],
         ),
       ),
