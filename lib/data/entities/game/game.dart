@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import "user.dart";
+import '../user/user.dart';
 part 'game.g.dart';
 
 @HiveType(typeId: 4)

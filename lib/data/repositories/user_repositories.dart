@@ -1,5 +1,5 @@
-import '../dataSources/locale/user_hive.dart';
-import '../entities/user.dart';
+import '../dataSources/local/user_hive.dart';
+import '../entities/user/user.dart';
 
 class UserRepository {
   static UserRepository? _instance;

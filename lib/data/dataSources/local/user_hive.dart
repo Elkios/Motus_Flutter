@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../entities/user.dart';
+import '../../entities/user/user.dart';
 
 class UserHive {
   static UserHive? _instance;

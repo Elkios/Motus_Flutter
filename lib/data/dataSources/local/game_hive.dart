@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../entities/game.dart';
+import '../../entities/game/game.dart';
 
 class GameHive {
   static GameHive? _instance;

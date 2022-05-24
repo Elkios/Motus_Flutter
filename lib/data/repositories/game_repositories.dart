@@ -1,5 +1,5 @@
-import '../dataSources/locale/game_hive.dart';
-import '../entities/game.dart';
+import '../dataSources/local/game_hive.dart';
+import '../entities/game/game.dart';
 
 class GameRepository {
   static GameRepository? _instance;
