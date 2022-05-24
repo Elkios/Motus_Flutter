@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import '../user/user.dart';
+import '../word/word.dart';
 part 'game.g.dart';
 
 @HiveType(typeId: 4)
@@ -14,6 +15,8 @@ class Game {
   User? user;
   @HiveField(4)
   int? score;
+  @HiveField(5)
+  Word? word;
   @HiveField(6)
   List<String>? tries;
   @HiveField(7)
