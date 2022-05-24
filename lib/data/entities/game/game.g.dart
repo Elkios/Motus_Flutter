@@ -24,13 +24,13 @@ class GameAdapter extends TypeAdapter<Game> {
       fields[4] as int?,
       (fields[6] as List?)?.cast<String>(),
       fields[7] as int?,
-    );
+    )..word = fields[5] as Word?;
   }
 
   @override
   void write(BinaryWriter writer, Game obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -41,6 +41,8 @@ class GameAdapter extends TypeAdapter<Game> {
       ..write(obj.user)
       ..writeByte(4)
       ..write(obj.score)
+      ..writeByte(5)
+      ..write(obj.word)
       ..writeByte(6)
       ..write(obj.tries)
       ..writeByte(7)
