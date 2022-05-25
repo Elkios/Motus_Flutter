@@ -18,13 +18,11 @@ class WordHive {
 
   Future<void> insertWord(Word word) async {
     await _box?.add(word);
-    await _box?.close();
     return;
   }
 
   Future<void> deleteWord(Word word) async {
     await _box?.delete(word.id);
-    await _box?.close();
     return;
   }
 
