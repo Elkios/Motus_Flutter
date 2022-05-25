@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:motus_flutter/data/entities/word/word.dart';
+import 'package:motus_flutter/data/repositories/user_repositories.dart';
 import 'package:motus_flutter/data/repositories/word_repository.dart';
 
 class MyHomeViewModel with ChangeNotifier {
@@ -23,6 +24,11 @@ class MyHomeViewModel with ChangeNotifier {
   // Get random word from dictionary
   Word getRandomWord() {
     return _list[Random().nextInt(_list.length)];
+  }
+
+   Future<void> logout() async  {
+    UserRepository repository = UserRepository.getInstance();
+    await repository.logout();
   }
 
 }

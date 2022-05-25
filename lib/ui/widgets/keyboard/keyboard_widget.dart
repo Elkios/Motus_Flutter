@@ -19,9 +19,6 @@ class KeyboardWidget extends StatefulWidget {
 
 class _KeyWidgetState extends State<KeyboardWidget> {
 
-  // azerty keyboard array
-
-
   @override
   Widget build(BuildContext context) {
     return Column(

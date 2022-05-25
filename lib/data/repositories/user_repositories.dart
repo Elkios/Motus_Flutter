@@ -22,4 +22,8 @@ class UserRepository {
     return userCredential.user;
   }
 
+  Future<void> logout() async {
+    await _userFirestore!.logout();
+  }
+
 }

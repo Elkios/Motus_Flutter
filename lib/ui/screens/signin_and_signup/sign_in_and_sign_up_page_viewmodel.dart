@@ -18,4 +18,13 @@ class SignInAndSignUpPageViewModel with ChangeNotifier{
     return;
   }
 
+  Future<void> logout() async {
+    UserRepository userRepository = UserRepository.getInstance();
+    await userRepository.logout();
+    _user = null;
+    notifyListeners();
+    return;
+
+  }
+
 }

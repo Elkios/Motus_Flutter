@@ -11,106 +11,102 @@ class SignInAndSignUpPage extends StatefulWidget {
 }
 
 class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
-
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
       body: Consumer<SignInAndSignUpPageViewModel>(
-          builder: (context, viewModel, child) {
-            viewModel.addListener(() {
-              if(viewModel.user != null){
-              context.beamToNamed('/home');
-              }
-            });
-            if(viewModel.user == null) {
-              return Container(
-                padding: EdgeInsets.symmetric(horizontal: 50),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children:[
-                        Icon(Icons.home),
-                        Text('Connexion'),
-                      ]
+          builder: (context, viewModel, child)
+    {
+      viewModel.addListener(() {
+        if (viewModel.user != null) {
+          context.beamToNamed('/home');
+        }
+      });
+      if (viewModel.user == null) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 50),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/motus&bouche.png'),
+                Padding(padding: const EdgeInsets.symmetric(vertical: 30)),
+                Text('Connexion', style: TextStyle(
+                    fontSize: 20, fontWeight: FontWeight.bold)),
+                Padding(padding: const EdgeInsets.symmetric(vertical: 10)),
+                TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Email',
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(0.0),
+                      child: Icon(
+                        Icons.login,
+                        color: Colors.black,
+                      ), // icon is 48px widget.
                     ),
-                    Padding(padding: const EdgeInsets.symmetric(vertical: 15)),
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: emailController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Email',
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.all(0.0),
-                          child: Icon(
-                            Icons.login,
-                            color: Colors.grey,
-                          ), // icon is 48px widget.
-                        ),
-                      ),
-                      validator: (String? value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Entrer un texte';
-                        }
-                        return null;
-                      },
-                    ),
-
-                    Padding(padding: const EdgeInsets.symmetric(vertical: 5)),
-                    TextFormField(
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      obscuringCharacter: "*",
-                      controller: passwordController,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Votre password',
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.all(0.0),
-                          child: Icon(
-                            Icons.password,
-                            color: Colors.grey,
-                          ), // icon is 48px widget.
-                        ),
-                      ),
-                      validator: (String? value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Entrer votre mot de passe';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextButton(
-                        onPressed: () {
-                        },
-                        child: Text('Vous êtes toujours pas inscrit ?')),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        // Foreground color
-                        onPrimary: Theme.of(context).colorScheme.onPrimary,
-                        // Background color
-                        primary: Theme.of(context).colorScheme.primary,
-                      ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-                      onPressed: () {
-                        viewModel.signIn(email: emailController.value.text, password: passwordController.value.text);
-                      },
-                      child: const Text('Connexion'),
-                    ),
-                  ],
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Entrer un texte';
+                    }
+                    return null;
+                  },
                 ),
-              );
-            }
-            return const Text('Bienvenue');
-          }
-      ),
-    );
-  }
 
-
-}
+                Padding(padding: const EdgeInsets.symmetric(vertical: 5)),
+                TextFormField(
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  obscuringCharacter: "*",
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Mot de passe',
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Icon(
+                        Icons.password,
+                        color: Colors.black,
+                      ), // icon is 48px widget.
+                    ),
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Entrer votre mot de passe';
+                    }
+                    return null;
+                  },
+                ),
+                Padding(padding: const EdgeInsets.symmetric(vertical: 5)),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    // Foreground color
+                    onPrimary: Theme
+                        .of(context)
+                        .colorScheme
+                        .onPrimary,
+                    // Background color
+                    primary: Theme
+                        .of(context)
+                        .colorScheme
+                        .primary,
+                  ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
+                  onPressed: () {
+                    viewModel.signIn(email: emailController.value.text,
+                        password: passwordController.value.text);
+                  },
+                  child: const Text('Jouer'),
+                ),
+              ]),
+        );
+      }
+      return const Text('aazertyuiopaazertyuiop');
+    }));
+  }}

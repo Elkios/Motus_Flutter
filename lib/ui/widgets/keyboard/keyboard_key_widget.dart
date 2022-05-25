@@ -34,8 +34,8 @@ class KeyWidget extends StatefulWidget {
   final KeyState state;
 
   final Map<String, Icon> customKeyToIcon = {
-    'enter': const Icon(Icons.arrow_forward, color: Colors.white, size: 20),
-    'delete': const Icon(Icons.backspace, color: Colors.white, size: 20),
+    'ENTER': const Icon(Icons.arrow_forward, color: Colors.white, size: 20),
+    'DELETE': const Icon(Icons.backspace, color: Colors.white, size: 20),
   };
 
   @override
@@ -48,7 +48,7 @@ class _KeyWidgetState extends State<KeyWidget> {
     if(widget.letter.startsWith('#')) {
       return Container(
         width: 70,
-        height: 30,
+        height: 40,
         margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: widget.state.color,
@@ -59,13 +59,18 @@ class _KeyWidgetState extends State<KeyWidget> {
           ),
         ),
         child: Center(
-          child: widget.customKeyToIcon[widget.letter.replaceAll('#', '')]
+          child: IconButton(
+            icon: widget.customKeyToIcon[widget.letter.replaceAll('#', '')] ?? const Icon(Icons.arrow_forward, color: Colors.white, size: 20),
+            onPressed: () {
+              /* TODO */
+            },
+          )
         ),
       );
     }
     return Container(
         width: 30,
-        height: 30,
+        height: 40,
         margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: widget.state.color,
@@ -80,7 +85,7 @@ class _KeyWidgetState extends State<KeyWidget> {
             onPressed: () {
               /* TODO */
             },
-            child: Text(widget.letter, style: const TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.bold)),
+            child: Text(widget.letter, style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold)),
           )
         ),
       );

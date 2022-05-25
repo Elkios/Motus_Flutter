@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:motus_flutter/ui/screens/home/my_home_page_viewmodel.dart';
 import 'package:motus_flutter/ui/widgets/game/grid_widget.dart';
 import 'package:motus_flutter/ui/widgets/keyboard/keyboard_widget.dart';
-import 'package:motus_flutter/ui/widgets/game/letter_widget.dart';
-import 'package:motus_flutter/ui/widgets/game/row_widget.dart';
+import 'package:motus_flutter/ui/widgets/my_bottom_bar.dart';
 import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -20,7 +19,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-
     MyHomeViewModel viewModel = context.read<MyHomeViewModel>();
     viewModel.loadDictionary();
 
@@ -30,6 +28,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset('assets/images/motus&bouche.png', width: 0.8 * MediaQuery.of(context).size.width),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
             Consumer<MyHomeViewModel>(
               builder: (context, viewModel, child) {
                 return GridWidget(word: viewModel.word);
@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: MyBottomBar(context: context)
     );
   }
 }
