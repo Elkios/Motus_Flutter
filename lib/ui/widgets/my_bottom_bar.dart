@@ -48,7 +48,6 @@ class MyBottomBarState extends State<MyBottomBar> {
   Future<void> onTapHandler(int index) async {
     MyHomeViewModel viewModel = context.read<MyHomeViewModel>();
     if (index == 3) {
-      print(index);
       await viewModel.logout();
       context.beamToNamed('/');
     }
