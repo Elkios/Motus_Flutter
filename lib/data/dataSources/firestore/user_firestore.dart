@@ -26,4 +26,8 @@ class UserFirestore {
     return _firebaseAuth.currentUser != null;
   }
 
+  Future<void> logout() async {
+    await _firebaseAuth.signOut();
+  }
+
 }

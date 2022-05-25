@@ -25,18 +25,18 @@ class MyApp extends StatelessWidget {
         title: 'Motus Flutter',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blueGrey,
+          primarySwatch: Colors.red,
           colorScheme: const ColorScheme(
-            primary: Colors.blueAccent,
+            primary: Colors.red,
             onPrimary: Colors.white,
 
             background: Colors.red,
-            onBackground: Colors.black,
+            onBackground: Colors.white,
 
             secondary: Colors.red,
             onSecondary: Colors.white,
 
-            error: Colors.black,
+            error: Colors.red,
             onError: Colors.white,
 
             surface: Colors.white,
