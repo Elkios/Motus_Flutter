@@ -26,6 +26,24 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
+          colorScheme: ColorScheme(
+            primary: Colors.blueAccent,
+            onPrimary: Colors.white,
+
+            background: Colors.red,
+            onBackground: Colors.black,
+
+            secondary: Colors.red,
+            onSecondary: Colors.white,
+
+            error: Colors.black,
+            onError: Colors.white,
+
+            surface: Colors.white,
+            onSurface: Colors.black,
+
+            brightness: Brightness.light,
+          ),
         )
     );
   }
