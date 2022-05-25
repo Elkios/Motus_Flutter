@@ -5,7 +5,7 @@ class UserFirestore {
   static UserFirestore? _instance;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  static getInstance() async {
+  static getInstance() {
     _instance ??= UserFirestore._();
     return _instance!;
   }

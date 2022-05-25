@@ -25,6 +25,7 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
           if(viewModel.user == null) {
             return Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextField(
                     keyboardType: TextInputType.emailAddress,

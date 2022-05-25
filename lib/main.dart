@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -9,7 +11,17 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  if (Platform.isIOS) {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+            apiKey: "AIzaSyDymVq7h2t1NsIbM0KhBqwaNL2bOFXZ5RE",
+            appId: "1:886913267321:ios:7be09a51c19fff7c76c6a8",
+            messagingSenderId: "886913267321",
+            projectId: "fluttermotus"));
+  } else {
+    await Firebase.initializeApp();
+  }
+
   await Hive.initFlutter();
   Hive.registerAdapter(WordAdapter());
   runApp(MultiProvider(
