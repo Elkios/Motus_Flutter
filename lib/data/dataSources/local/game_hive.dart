@@ -20,4 +20,8 @@ class GameHive {
     await _box?.close();
     return;
   }
+
+  int nextId() {
+    return _box!.length;
+  }
 }

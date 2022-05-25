@@ -30,4 +30,9 @@ class UserFirestore {
     await _firebaseAuth.signOut();
   }
 
+  // Get Current User
+  User? getCurrentUser() {
+    return _firebaseAuth.currentUser;
+  }
+
 }

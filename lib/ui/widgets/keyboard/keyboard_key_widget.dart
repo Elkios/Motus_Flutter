@@ -47,7 +47,7 @@ class _KeyWidgetState extends State<KeyWidget> {
   Widget build(BuildContext context) {
     if(widget.letter.startsWith('#')) {
       return Container(
-        width: 70,
+        width: (MediaQuery.of(context).size.width / 15) * 2 + 10,
         height: 40,
         margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
@@ -69,7 +69,8 @@ class _KeyWidgetState extends State<KeyWidget> {
       );
     }
     return Container(
-        width: 30,
+        // responsive width
+        width: MediaQuery.of(context).size.width / 15,
         height: 40,
         margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(

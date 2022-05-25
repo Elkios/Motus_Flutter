@@ -22,6 +22,11 @@ class UserRepository {
     return userCredential.user;
   }
 
+  // Get Current User
+  Future<User?> getCurrentUser() async {
+    return await _userFirestore!.getCurrentUser();
+  }
+
   Future<void> logout() async {
     await _userFirestore!.logout();
   }

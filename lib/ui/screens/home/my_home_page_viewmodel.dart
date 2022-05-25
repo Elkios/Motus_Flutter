@@ -1,8 +1,11 @@
 import 'dart:math';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:motus_flutter/data/entities/game/game.dart';
 import 'package:motus_flutter/data/entities/word/word.dart';
+import 'package:motus_flutter/data/repositories/game_repositories.dart';
 import 'package:motus_flutter/data/repositories/user_repositories.dart';
 import 'package:motus_flutter/data/repositories/word_repository.dart';
 
@@ -14,12 +17,26 @@ class MyHomeViewModel with ChangeNotifier {
   late List<Word> _list = [];
   List<Word> get list => _list;
 
+  late Game _game;
+  Game get game => _game;
+
   Future<void> loadDictionary() async {
     WordRepository repository = await WordRepository.getInstance();
     _list = await repository.loadWords();
     _word = getRandomWord();
     notifyListeners();
   }
+
+  Future<void> createGame() async {
+    GameRepository repository = await GameRepository.getInstance();
+    UserRepository userRepository = UserRepository.getInstance();
+    User? user = await userRepository.getCurrentUser();
+    if (user != null) {
+      _game = await repository.createGame(user);
+      notifyListeners();
+    }
+  }
+
 
   // Get random word from dictionary
   Word getRandomWord() {
