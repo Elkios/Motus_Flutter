@@ -1,3 +1,4 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:motus_flutter/ui/screens/signin_and_signup/sign_in_and_sign_up_page_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +22,7 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
           builder: (context, viewModel, child) {
             viewModel.addListener(() {
               if(viewModel.user != null){
-                print('user: ${viewModel.user}');
+              context.beamToNamed('/home');
               }
             });
             if(viewModel.user == null) {
@@ -110,7 +111,6 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
       ),
     );
   }
-
 
 
 }

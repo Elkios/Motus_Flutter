@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   final routerDeledate = BeamerDelegate(locationBuilder: RoutesLocationBuilder(
     routes: {
-      '/': (context, state, data) => SignInAndSignUpPage(),
+      '/': (context, state, data) => const SignInAndSignUpPage(),
       '/home': (context, state, data) => const MyHomePage(title: 'Motus')
     },
   ));
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
-          colorScheme: ColorScheme(
+          colorScheme: const ColorScheme(
             primary: Colors.blueAccent,
             onPrimary: Colors.white,
 
