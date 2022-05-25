@@ -18,7 +18,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-
     MyHomeViewModel viewModel = context.read<MyHomeViewModel>();
     viewModel.loadDictionary();
 
@@ -33,9 +32,28 @@ class _MyHomePageState extends State<MyHomePage> {
                 return RowWidget(word: viewModel.word);
               },
             ),
-
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Acceuil',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.games),
+            label: 'Jouer',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.supervised_user_circle),
+            label: 'Profil',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.logout),
+            label: 'Deconnexion',
+          ),
+        ],
       ),
     );
   }
