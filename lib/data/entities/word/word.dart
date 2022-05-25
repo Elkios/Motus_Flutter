@@ -15,7 +15,7 @@ class Word {
 
   Word(this._id, this._word);
 
-  wordLength() => _word?.length ?? 0;
+  int wordLength() => _word?.length ?? 0;
 
-  toCharsList() => _word?.split('') ?? [];
+  List<String> toCharsList() => _word?.split('') ?? [];
 }

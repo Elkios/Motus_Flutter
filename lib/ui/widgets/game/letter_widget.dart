@@ -7,6 +7,7 @@ enum LetterState {
   valid,
   invalid,
   semivalid,
+  empty
 }
 
 extension LetterStateExtension on LetterState {
@@ -17,6 +18,8 @@ extension LetterStateExtension on LetterState {
       case LetterState.semivalid:
         return Colors.orange;
       case LetterState.invalid:
+        return Colors.transparent;
+      case LetterState.empty:
         return Colors.transparent;
       default:
         return Colors.blue;
@@ -41,7 +44,13 @@ class _LetterWidgetState extends State<LetterWidget> {
         width: 40,
         height: 40,
         padding: const EdgeInsets.all(5),
-        color: widget.state.color,
+        decoration: BoxDecoration(
+          color: widget.state.color,
+          border: Border.all(
+            color: Colors.white,
+            width: 1,
+          ),
+        ),
         child: Center(
           child: Text(widget.letter, style: const TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold))
         ),
