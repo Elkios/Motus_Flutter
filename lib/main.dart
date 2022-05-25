@@ -29,7 +29,7 @@ Future<void> main() async {
         ChangeNotifierProvider<MyHomeViewModel>(create: (_) => MyHomeViewModel()),
         ChangeNotifierProvider(create: (_) => SignInAndSignUpPageViewModel())
       ],
-      child: const MyApp()
+      child: MyApp()
     )
   );
 }
