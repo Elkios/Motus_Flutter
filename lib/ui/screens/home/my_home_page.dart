@@ -1,4 +1,10 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:motus_flutter/ui/screens/home/my_home_page_viewmodel.dart';
+import 'package:motus_flutter/ui/widgets/letter_widget.dart';
+import 'package:motus_flutter/ui/widgets/row_widget.dart';
+import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -12,17 +18,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+
+    MyHomeViewModel viewModel = context.read<MyHomeViewModel>();
+    viewModel.loadDictionary();
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      backgroundColor: Colors.blue,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'Hello !'
-            )
+          children: <Widget>[
+            Consumer<MyHomeViewModel>(
+              builder: (context, viewModel, child) {
+                return RowWidget(word: viewModel.word);
+              },
+            ),
+
           ],
         ),
       ),

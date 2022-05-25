@@ -21,4 +21,31 @@ class WordHive {
     await _box?.close();
     return;
   }
+
+  Future<void> deleteWord(Word word) async {
+    await _box?.delete(word.id);
+    await _box?.close();
+    return;
+  }
+
+  // Get ALl Words
+  List<Word> getAllWords() {
+    List<Word> words = _box?.values.toList() ?? [];
+    return words;
+  }
+
+  // Get Word By Id
+  Word? getWordById(int id) {
+    Word? word = _box?.get(id);
+    return word;
+  }
+
+  bool isEmpty() {
+    return _box?.isEmpty ?? true;
+  }
+
+  void clear() {
+    _box?.clear();
+  }
+
 }

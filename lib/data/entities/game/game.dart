@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import '../user/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 part 'game.g.dart';
 
 @HiveType(typeId: 4)

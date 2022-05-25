@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:motus_flutter/data/entities/word/word.dart';
@@ -8,15 +10,19 @@ class MyHomeViewModel with ChangeNotifier {
   late Word _word;
   Word get word => _word;
 
-  late List<String> _list = [];
-  List<String> get list => _list;
+  late List<Word> _list = [];
+  List<Word> get list => _list;
 
   Future<void> loadDictionary() async {
-    String dico = await rootBundle.loadString('assets/files/dico.txt');
-    List<String> filteredDico = dico.split('\n').where((word) => word.length >= 5).toList();
-    _list = filteredDico;
+    WordRepository repository = await WordRepository.getInstance();
+    _list = await repository.loadWords();
+    _word = getRandomWord();
     notifyListeners();
-    return;
+  }
+
+  // Get random word from dictionary
+  Word getRandomWord() {
+    return _list[Random().nextInt(_list.length)];
   }
 
 }

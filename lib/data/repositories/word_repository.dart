@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:motus_flutter/data/dataSources/local/word_hive.dart';
 import 'package:motus_flutter/data/entities/word/word.dart';
 
@@ -18,5 +19,17 @@ class WordRepository {
   Future<Word> insertWord(Word word) async {
     await _wordHive?.insertWord(word);
     return word;
+  }
+
+  Future<List<Word>> loadWords() async {
+    _wordHive!.clear();
+    if(_wordHive!.isEmpty()) {
+      String dico = await rootBundle.loadString('assets/files/dico.txt');
+      List<String> filteredDico = dico.split('\n').where((word) => word.length >= 5 && word.length <= 9).toList();
+      filteredDico.asMap().forEach((index, text) {
+        insertWord(Word(index, text));
+      });
+    }
+    return _wordHive!.getAllWords();
   }
 }
