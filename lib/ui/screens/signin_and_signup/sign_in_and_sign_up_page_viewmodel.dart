@@ -21,6 +21,7 @@ class SignInAndSignUpPageViewModel with ChangeNotifier{
   Future<void> logout() async {
     UserRepository userRepository = UserRepository.getInstance();
     await userRepository.logout();
+    _user = null;
     notifyListeners();
     return;
 

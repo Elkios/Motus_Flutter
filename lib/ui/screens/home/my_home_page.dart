@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:motus_flutter/ui/screens/home/my_home_page_viewmodel.dart';
 import 'package:motus_flutter/ui/widgets/letter_widget.dart';
+import 'package:motus_flutter/ui/widgets/my_bottom_bar.dart';
 import 'package:motus_flutter/ui/widgets/row_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -35,28 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Accueil',
-            backgroundColor: Colors.red,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.games),
-            label: 'Jouer',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.supervised_user_circle),
-            label: 'Profil',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.logout),
-            label: 'Deconnexion',
-          ),
-        ],
-      ),
+      bottomNavigationBar: MyBottomBar(context: context)
     );
   }
 }
