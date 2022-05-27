@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:motus_flutter/data/entities/try/try.dart';
 import '../word/word.dart';
 
 part 'game.g.dart';
@@ -13,15 +13,43 @@ class Game {
   @HiveField(2)
   DateTime? endDate;
   @HiveField(3)
-  User? user;
+  String? userId;
   @HiveField(4)
-  int? score;
+  int score;
   @HiveField(5)
   Word? word;
   @HiveField(6)
-  List<String>? tries;
+  List<Try>? tries;
   @HiveField(7)
-  int? limitTries;
+  int limitTries;
 
-  Game(this.id, this.startDate,this.endDate,this.user,this.score,this.tries,this.limitTries);
+  Game(this.id, this.startDate,this.endDate,this.userId,this.score,this.tries,this.limitTries);
+
+  bool checkVictory(String input) {
+    return word!.word == input;
+  }
+
+  bool checkDefeat() {
+    return tries!.length >= limitTries;
+  }
+
+  bool checkFinished(String input) {
+    return checkVictory(input) || checkDefeat();
+  }
+
+  bool isFinished() {
+    return endDate != null;
+  }
+
+  bool isVictory() {
+    return endDate != null && score > 0;
+  }
+
+  int calculateScore() {
+    // calculate score based on tries ( and time )
+    score = limitTries - tries!.length;
+    return score;
+  }
+
+
 }

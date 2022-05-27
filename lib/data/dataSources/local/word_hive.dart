@@ -39,11 +39,11 @@ class WordHive {
   }
 
   bool isEmpty() {
-    return _box?.isEmpty ?? true;
+    return _box!.isEmpty;
   }
 
   void clear() {
-    _box?.clear();
+    _box!.clear();
   }
 
 }

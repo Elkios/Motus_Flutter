@@ -3,6 +3,9 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:motus_flutter/data/entities/game/game.dart';
+import 'package:motus_flutter/data/entities/trash/trash.dart';
+import 'package:motus_flutter/data/entities/try/try.dart';
 import 'package:motus_flutter/data/entities/word/word.dart';
 import 'package:motus_flutter/ui/my_app.dart';
 import 'package:motus_flutter/ui/screens/home/my_home_page_viewmodel.dart';
@@ -24,6 +27,9 @@ Future<void> main() async {
 
   await Hive.initFlutter();
   Hive.registerAdapter(WordAdapter());
+  Hive.registerAdapter(GameAdapter());
+  Hive.registerAdapter(TryAdapter());
+  Hive.registerAdapter(TrashAdapter());
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider<MyHomeViewModel>(create: (_) => MyHomeViewModel()),

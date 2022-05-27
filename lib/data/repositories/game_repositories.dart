@@ -32,7 +32,7 @@ class GameRepository {
         _gameHive!.nextId(),
         DateTime.now(),
         null,
-        user,
+        user.uid,
         0,
         [],
         DEFAULT_TRIES_LIMIT,

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:flutter/services.dart';
@@ -32,6 +34,7 @@ class WordRepository {
     if(_wordHive!.isEmpty()) {
       String dico = await rootBundle.loadString('assets/files/dico.txt');
       List<String> filteredDico = dico.split('\n').where((word) => word.length >= 5 && word.length <= 9).toList();
+      stdout.writeln('[INFO] ${filteredDico.length} words loaded');
       filteredDico.asMap().forEach((index, text) {
         insertWord(Word(index, removeDiacritics(text.toUpperCase())));
       });

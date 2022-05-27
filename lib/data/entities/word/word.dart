@@ -10,14 +10,14 @@ class Word {
   get id => _id;
 
   @HiveField(1)
-  final String? _word;
-  get word => _word;
+  final String _word;
+  String get word => _word;
 
   Word(this._id, this._word);
 
-  int wordLength() => _word?.length ?? 0;
+  int wordLength() => _word.length;
 
-  List<String> toCharsList() => _word?.split('') ?? [];
+  List<String> toCharsList() => _word.split('');
 
   Word.fromJson(Map<String, dynamic> json)
       : _id = json['id'] as int,

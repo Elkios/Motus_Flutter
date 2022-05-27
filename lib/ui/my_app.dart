@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       locationBuilder: RoutesLocationBuilder(
     routes: {
       '/': (context, state, data) => const SignInAndSignUpPage(),
-      '/home': (context, state, data) => const MyHomePage(title: 'Motus')
+      '/home': (context, state, data) => const MyHomePage()
     },
   ));
 

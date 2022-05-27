@@ -28,10 +28,11 @@ extension KeyStateExtension on KeyState {
 }
 
 class KeyWidget extends StatefulWidget {
-  KeyWidget({Key? key, required this.letter, required this.state}) : super(key: key);
+  KeyWidget({Key? key, required this.letter, required this.state, required this.onKeyPressed}) : super(key: key);
 
   final String letter;
   final KeyState state;
+  final Function onKeyPressed;
 
   final Map<String, Icon> customKeyToIcon = {
     'ENTER': const Icon(Icons.arrow_forward, color: Colors.white, size: 20),
@@ -62,7 +63,7 @@ class _KeyWidgetState extends State<KeyWidget> {
           child: IconButton(
             icon: widget.customKeyToIcon[widget.letter.replaceAll('#', '')] ?? const Icon(Icons.arrow_forward, color: Colors.white, size: 20),
             onPressed: () {
-              /* TODO */
+              widget.onKeyPressed(widget.letter);
             },
           )
         ),
@@ -84,7 +85,7 @@ class _KeyWidgetState extends State<KeyWidget> {
         child: Center(
           child: TextButton(
             onPressed: () {
-              /* TODO */
+              widget.onKeyPressed(widget.letter);
             },
             child: Text(widget.letter, style: const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold)),
           )

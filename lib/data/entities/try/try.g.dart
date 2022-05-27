@@ -1,35 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'word.dart';
+part of 'try.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class WordAdapter extends TypeAdapter<Word> {
+class TryAdapter extends TypeAdapter<Try> {
   @override
-  final int typeId = 1;
+  final int typeId = 5;
 
   @override
-  Word read(BinaryReader reader) {
+  Try read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Word(
-      fields[0] as int?,
+    return Try(
+      fields[0] as String?,
       fields[1] as String,
+      (fields[2] as List).cast<LetterState>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, Word obj) {
+  void write(BinaryWriter writer, Try obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj._id)
       ..writeByte(1)
-      ..write(obj._word);
+      ..write(obj._word)
+      ..writeByte(2)
+      ..write(obj._lettersState);
   }
 
   @override
@@ -38,7 +41,7 @@ class WordAdapter extends TypeAdapter<Word> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is WordAdapter &&
+      other is TryAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

@@ -1,5 +1,10 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'game.dart';
+
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
 
 class GameAdapter extends TypeAdapter<Game> {
   @override
@@ -15,10 +20,10 @@ class GameAdapter extends TypeAdapter<Game> {
       fields[0] as int?,
       fields[1] as DateTime?,
       fields[2] as DateTime?,
-      fields[3] as User?,
-      fields[4] as int?,
-      (fields[6] as List?)?.cast<String>(),
-      fields[7] as int?,
+      fields[3] as String?,
+      fields[4] as int,
+      (fields[6] as List?)?.cast<Try>(),
+      fields[7] as int,
     )..word = fields[5] as Word?;
   }
 
@@ -33,7 +38,7 @@ class GameAdapter extends TypeAdapter<Game> {
       ..writeByte(2)
       ..write(obj.endDate)
       ..writeByte(3)
-      ..write(obj.user)
+      ..write(obj.userId)
       ..writeByte(4)
       ..write(obj.score)
       ..writeByte(5)

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:motus_flutter/ui/screens/signin_and_signup/sign_in_and_sign_up_page_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SignInAndSignUpPage extends StatefulWidget {
   const SignInAndSignUpPage({Key? key}) : super(key: key);
@@ -29,24 +28,24 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
           });
           if (viewModel.user == null) {
             return Container(
-              padding: EdgeInsets.symmetric(horizontal: 50),
+              padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElasticIn(
-                      duration: Duration(milliseconds: 2000),
+                      duration: const Duration(milliseconds: 2000),
                       child: Image.asset('assets/images/motus&bouche.png'),
                     ),
-                    Padding(padding: const EdgeInsets.symmetric(vertical: 30)),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 30)),
                     ElasticIn(
-                      duration: Duration(milliseconds: 2000),
-                      child: Text('Connexion',
+                      duration: const Duration(milliseconds: 2000),
+                      child: const Text('Connexion',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold)),
                     ),
-                    Padding(padding: const EdgeInsets.symmetric(vertical: 10)),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                     ElasticIn(
-                      duration: Duration(milliseconds: 2000),
+                      duration: const Duration(milliseconds: 2000),
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         controller: emailController,
@@ -69,9 +68,9 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
                         },
                       ),
                     ),
-                    Padding(padding: const EdgeInsets.symmetric(vertical: 5)),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                     ElasticIn(
-                      duration: Duration(milliseconds: 2000),
+                      duration: const Duration(milliseconds: 2000),
                       child: TextFormField(
                         enableSuggestions: true,
                         autocorrect: false,
@@ -97,9 +96,9 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
                         },
                       ),
                     ),
-                    Padding(padding: const EdgeInsets.symmetric(vertical: 5)),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                     ElasticIn(
-                      duration: Duration(milliseconds: 2000),
+                      duration: const Duration(milliseconds: 2000),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           // Foreground color
@@ -116,7 +115,7 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
                             print("throwing new error");
                             throw Exception("Error on server");
                           }
-                          String? encodeQueryParameters(Map<String, String> params){
+/*                          String? encodeQueryParameters(Map<String, String> params){
                             return params.entries
                                 .map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
                                 .join('&');
@@ -132,7 +131,7 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
                           );
                           if(await canLaunchUrl(mapsUri)){
                           launchUrl(mapsUri);
-                          }
+                          }*/
                         },
                         child: const Text('Jouer'),
                       ),

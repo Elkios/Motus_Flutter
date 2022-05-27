@@ -5,13 +5,15 @@ import 'package:motus_flutter/ui/screens/home/my_home_page_viewmodel.dart';
 import 'package:motus_flutter/ui/widgets/keyboard/keyboard_key_widget.dart';
 
 class KeyboardWidget extends StatefulWidget {
-  KeyboardWidget({Key? key}) : super(key: key);
+  KeyboardWidget({Key? key, required this.onKeyPressed}) : super(key: key);
 
   List<List<String>> azerty = [
     ['a', 'z', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
     ['q', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm'],
     ['#delete', 'w', 'x', 'c', 'v', 'b', 'n', '#enter'],
   ];
+
+  final Function onKeyPressed;
 
   @override
   State<KeyboardWidget> createState() => _KeyWidgetState();
@@ -28,7 +30,7 @@ class _KeyWidgetState extends State<KeyboardWidget> {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: row.map<Widget>((letter) {
-              return KeyWidget(letter: letter.toUpperCase(), state: KeyState.unused);
+              return KeyWidget(letter: letter.toUpperCase(), state: KeyState.unused, onKeyPressed: widget.onKeyPressed);
             }).toList(),
           );
         }).toList(),
