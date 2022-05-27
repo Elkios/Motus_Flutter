@@ -111,7 +111,7 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
                             viewModel.signIn(
                                 email: emailController.value.text,
                                 password: passwordController.value.text);
-                          } on Exception catch(_){
+                          } on Exception catch (_) {
                             print("throwing new error");
                             throw Exception("Error on server");
                           }

@@ -1,5 +1,6 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
+import 'package:motus_flutter/ui/screens/signin_and_signup/sign_in_and_sign_up_page_viewmodel.dart';
 import '../../data/repositories/user_repositories.dart';
 import 'package:provider/provider.dart';
 import '../screens/home/my_home_page_viewmodel.dart';
@@ -46,7 +47,8 @@ class MyBottomBarState extends State<MyBottomBar> {
   }
 
   Future<void> onTapHandler(int index) async {
-    MyHomeViewModel viewModel = context.read<MyHomeViewModel>();
+    SignInAndSignUpPageViewModel viewModel =
+        context.read<SignInAndSignUpPageViewModel>();
     if (index == 3) {
       await viewModel.logout();
       context.beamToNamed('/');
