@@ -40,5 +40,21 @@ class GameRepository {
     );
   }
 
+  // update game
+  Future<void> updateGame(Game game) async {
+    await _gameHive?.updateGame(game);
+    return;
+  }
+
+  // Find game by user id
+  Future<List<Game>?> findGameByUserId(String userId) async {
+    return await _gameHive?.findGameByUser(userId);
+  }
+
+  // Find current game of user
+  Future<Game?> findCurrentGameOfUser(User user) async {
+    return await _gameHive?.findCurrentGameOfUser(user);
+  }
+
 
 }

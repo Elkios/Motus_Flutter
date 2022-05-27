@@ -23,7 +23,7 @@ class UserRepository {
   }
 
   // Get Current User
-  Future<User?> getCurrentUser() async {
+  User? getCurrentUser() {
     return _userFirestore!.getCurrentUser();
   }
 

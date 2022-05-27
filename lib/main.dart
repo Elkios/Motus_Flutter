@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:motus_flutter/data/entities/game/game.dart';
+import 'package:motus_flutter/data/entities/letterState/letter_state.dart';
 import 'package:motus_flutter/data/entities/trash/trash.dart';
 import 'package:motus_flutter/data/entities/try/try.dart';
 import 'package:motus_flutter/data/entities/word/word.dart';
@@ -35,6 +36,7 @@ Future<void> main() async {
   Hive.registerAdapter(GameAdapter());
   Hive.registerAdapter(TryAdapter());
   Hive.registerAdapter(TrashAdapter());
+  Hive.registerAdapter(LetterStateAdapter());
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider<MyHomeViewModel>(create: (_) => MyHomeViewModel()),

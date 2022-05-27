@@ -1,16 +1,18 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:motus_flutter/data/entities/letterState/letter_state.dart';
 import 'package:motus_flutter/data/entities/try/try.dart';
 import 'package:motus_flutter/ui/widgets/game/letter_widget.dart';
 
 class RowWidget extends StatefulWidget {
   RowWidget(
-      {Key? key, required this.rowLength, this.tryWord, this.currentInput})
+      {Key? key, required this.rowLength, this.tryWord, this.currentInput, this.overlay})
       : super(key: key);
 
   Try? tryWord;
   String? currentInput;
+  List<String>? overlay;
   int rowLength;
 
   @override
@@ -33,7 +35,7 @@ class _RowWidgetState extends State<RowWidget> {
         return LetterWidget(
           letter: widget.currentInput!.length > index
               ? widget.currentInput![index]
-              : '',
+              : widget.overlay![index],
           state: index == 0 ? LetterState.valid : LetterState.empty,
         );
       }).toList();

@@ -1,5 +1,7 @@
 import 'package:hive/hive.dart';
+import 'package:motus_flutter/data/entities/letterState/letter_state.dart';
 import 'package:motus_flutter/data/entities/try/try.dart';
+
 import '../word/word.dart';
 
 part 'game.g.dart';
@@ -23,7 +25,8 @@ class Game {
   @HiveField(7)
   int limitTries;
 
-  Game(this.id, this.startDate,this.endDate,this.userId,this.score,this.tries,this.limitTries);
+  Game(this.id, this.startDate, this.endDate, this.userId, this.score,
+      this.tries, this.limitTries);
 
   bool checkVictory(String input) {
     return word!.word == input;
@@ -47,9 +50,24 @@ class Game {
 
   int calculateScore() {
     // calculate score based on tries ( and time )
-    score = limitTries - tries!.length;
+    score =
+        (limitTries - tries!.length) + (checkVictory(tries!.last.word) ? 1 : 0);
     return score;
   }
 
+  List<String> generateOverlay() {
+    List<String> overlay = List.generate(word!.wordLength(), (index) => '');
+    for (Try tryItem in tries!) {
+      for (int i = 0; i < tryItem.lettersState.length; i++) {
+        overlay[i] =
+            tryItem.lettersState[i] == LetterState.valid ? tryItem.word[i] : '';
+      }
+    }
+    return overlay;
+  }
 
+  bool isOld() {
+    return startDate != null &&
+        startDate!.difference(DateTime.now()).inDays > 1;
+  }
 }

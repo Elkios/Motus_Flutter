@@ -28,11 +28,11 @@ class _GridWidgetState extends State<GridWidget> {
 
     currentRow = widget.game.tries!.length;
 
-    rows = List.generate(5, (index) {
+    rows = List.generate(widget.game.limitTries, (index) {
       if(index < widget.game.tries!.length) {
         return RowWidget(rowLength: widget.game.word!.wordLength(), tryWord: widget.game.tries![index]);
       } else if (index == currentRow){
-        return RowWidget(rowLength: widget.game.word!.wordLength(), currentInput: widget.currentInput);
+        return RowWidget(rowLength: widget.game.word!.wordLength(), currentInput: widget.currentInput, overlay: widget.game.generateOverlay());
       } else {
         return RowWidget(rowLength: widget.game.word!.wordLength());
       }

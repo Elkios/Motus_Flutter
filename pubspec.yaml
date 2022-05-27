@@ -36,6 +36,7 @@ dependencies:
   firebase_auth: ^3.3.18
   beamer: ^1.4.1+1
   diacritic: ^0.1.3
+  confetti: ^0.7.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -72,6 +73,7 @@ flutter:
   assets:
     - assets/files/dico.txt
     - assets/images/motus&bouche.png
+    - assets/images/hint_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

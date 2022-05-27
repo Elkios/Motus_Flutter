@@ -30,11 +30,10 @@ class WordRepository {
   }
 
   Future<List<Word>> loadWords() async {
-    _wordHive!.clear();
     if(_wordHive!.isEmpty()) {
       String dico = await rootBundle.loadString('assets/files/dico.txt');
       String separator = dico.contains('\r\n') ? '\r\n' : '\n';
-      List<String> filteredDico = dico.split(separator).where((word) => word.length >= 5 && word.length <= 9).toList();
+      List<String> filteredDico = dico.split(separator).where((word) => word.length >= 5 && word.length <= 9 && !word.contains('-')).toList();
       stdout.writeln('[INFO] ${filteredDico.length} words loaded');
       filteredDico.asMap().forEach((index, text) {
         insertWord(Word(index, removeDiacritics(text.toUpperCase())));

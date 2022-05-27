@@ -1,28 +1,5 @@
 import 'package:flutter/material.dart';
-
-enum LetterState {
-  valid,
-  invalid,
-  semivalid,
-  empty
-}
-
-extension LetterStateExtension on LetterState {
-  Color get color {
-    switch (this) {
-      case LetterState.valid:
-        return Colors.green;
-      case LetterState.semivalid:
-        return Colors.orange;
-      case LetterState.invalid:
-        return Colors.transparent;
-      case LetterState.empty:
-        return Colors.transparent;
-      default:
-        return Colors.blue;
-    }
-  }
-}
+import 'package:motus_flutter/data/entities/letterState/letter_state.dart';
 
 class LetterWidget extends StatefulWidget {
   const LetterWidget({Key? key, required this.letter, required this.state}) : super(key: key);

@@ -1,6 +1,6 @@
 
 import 'package:hive/hive.dart';
-import 'package:motus_flutter/ui/widgets/game/letter_widget.dart';
+import 'package:motus_flutter/data/entities/letterState/letter_state.dart';
 
 part 'try.g.dart';
 
