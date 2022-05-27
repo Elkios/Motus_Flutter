@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:flutter/services.dart';
+import 'package:motus_flutter/data/dataSources/firestore/word_firstore.dart';
 import 'package:motus_flutter/data/dataSources/local/word_hive.dart';
 import 'package:motus_flutter/data/entities/word/word.dart';
-
-import '../dataSources/firestore/word_firestore.dart';
+import '../dataSources/firestore/word_firstore.dart';
 
 class WordRepository {
   static WordRepository? _instance;
@@ -47,7 +47,7 @@ class WordRepository {
 
   // get all words
   Future<List<Word>> getAllWordsFirebase() async {
-    QuerySnapshot<Word> words = await _wordFireStore!.getAllWords();
+    QuerySnapshot<Word> words = await _wordFireStore!.getAll();
     return words.docs.map((doc) => doc.data()).toList();
   }
 
@@ -71,5 +71,4 @@ class WordRepository {
   Future<void> insertWordWithId(Word word, String id) async {
     await _wordFireStore!.insertWordWithId(word, id);
   }
-
 }

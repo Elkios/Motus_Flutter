@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:motus_flutter/ui/screens/signin_and_signup/sign_in_and_sign_up_page_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SignInAndSignUpPage extends StatefulWidget {
   const SignInAndSignUpPage({Key? key}) : super(key: key);
@@ -107,9 +108,31 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
                           primary: Theme.of(context).colorScheme.primary,
                         ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
                         onPressed: () {
-                          viewModel.signIn(
-                              email: emailController.value.text,
-                              password: passwordController.value.text);
+                          try {
+                            viewModel.signIn(
+                                email: emailController.value.text,
+                                password: passwordController.value.text);
+                          } on Exception catch(_){
+                            print("throwing new error");
+                            throw Exception("Error on server");
+                          }
+                          String? encodeQueryParameters(Map<String, String> params){
+                            return params.entries
+                                .map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                .join('&');
+                          }
+                          String mapsUrl = 'https://www.google.com/maps/search/?api=1&query=47.866617,2.669932';
+                          Uri mapsUri = Uri.parse(mapsUrl);
+                          Uri emailLaunchUri = Uri(
+                            scheme : 'mailto',
+                            path: 'eddyweber80@gmail.com',
+                            query: encodeQueryParameters(<String, String>{
+                              'subject': 'Example Subject & Symbols are allowed!'
+                            }),
+                          );
+                          if(await canLaunchUrl(mapsUri)){
+                          launchUrl(mapsUri);
+                          }
                         },
                         child: const Text('Jouer'),
                       ),
@@ -117,7 +140,7 @@ class _SignInAndSignUpPageState extends State<SignInAndSignUpPage> {
                   ]),
             );
           }
-          return const Text('aazertyuiopaazertyuiop');
+          return const Text('Bienveue');
         }));
   }
 }
