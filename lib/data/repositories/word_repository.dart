@@ -33,7 +33,8 @@ class WordRepository {
     _wordHive!.clear();
     if(_wordHive!.isEmpty()) {
       String dico = await rootBundle.loadString('assets/files/dico.txt');
-      List<String> filteredDico = dico.split('\n').where((word) => word.length >= 5 && word.length <= 9).toList();
+      String separator = dico.contains('\r\n') ? '\r\n' : '\n';
+      List<String> filteredDico = dico.split(separator).where((word) => word.length >= 5 && word.length <= 9).toList();
       stdout.writeln('[INFO] ${filteredDico.length} words loaded');
       filteredDico.asMap().forEach((index, text) {
         insertWord(Word(index, removeDiacritics(text.toUpperCase())));
