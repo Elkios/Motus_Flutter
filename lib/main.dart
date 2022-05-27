@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:motus_flutter/data/entities/game/game.dart';
 import 'package:motus_flutter/data/entities/trash/trash.dart';
@@ -14,6 +15,10 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   if (Platform.isIOS) {
     await Firebase.initializeApp(
         options: const FirebaseOptions(
