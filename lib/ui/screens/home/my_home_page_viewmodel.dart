@@ -25,6 +25,7 @@ class MyHomeViewModel with ChangeNotifier {
     _list = await repository.loadWords();
     _word = getRandomWord();
     // repository.insertWordWithId(word, user!.uid);
+    print(list);
     notifyListeners();
   }
 
