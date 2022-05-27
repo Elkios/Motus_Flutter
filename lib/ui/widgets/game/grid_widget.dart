@@ -10,7 +10,6 @@ class GridWidget extends StatefulWidget {
   GridWidget({Key? key, required this.word}) : super(key: key);
 
   final Word word;
-  RowWidget? currentRow;
 
   @override
   State<GridWidget> createState() => _GridWidgetState();
@@ -18,18 +17,18 @@ class GridWidget extends StatefulWidget {
 
 class _GridWidgetState extends State<GridWidget> {
 
+  late int currentRow = 3;
+  late List<RowWidget> rows = [];
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children:
-        /*widget.word.word.split('').map<Widget>((letter) {
-          return LetterWidget(letter: letter, state: LetterState.empty);
-        }).toList(),*/
-        // generate 5 rows
-        List.generate(5, (index) {
-          return RowWidget(word: widget.word);
-        }).toList(),
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(5, (index) {
+          return RowWidget(word: widget.word,
+              tryWord: widget.word
+                  .word[0]);
+        }).toList()
     );
   }
 }

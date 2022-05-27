@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:motus_flutter/ui/screens/home/my_home_page_viewmodel.dart';
 
 enum LetterState {
   valid,

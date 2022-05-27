@@ -1,16 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:flutter/services.dart';
 import 'package:motus_flutter/data/dataSources/local/word_hive.dart';
 import 'package:motus_flutter/data/entities/word/word.dart';
 
+import '../dataSources/firestore/word_firestore.dart';
+
 class WordRepository {
   static WordRepository? _instance;
   static WordHive? _wordHive;
+  static WordFireStore? _wordFireStore;
 
   static Future<WordRepository> getInstance() async {
     if (_instance == null) {
       _wordHive = await WordHive.getInstance();
       _instance = WordRepository._();
+      _wordFireStore = WordFireStore.getInstance();
     }
     return _instance!;
   }
@@ -36,6 +41,35 @@ class WordRepository {
 
   bool isEmpty() {
     return _wordHive!.isEmpty();
+  }
+
+  // Firestore
+
+  // get all words
+  Future<List<Word>> getAllWordsFirebase() async {
+    QuerySnapshot<Word> words = await _wordFireStore!.getAllWords();
+    return words.docs.map((doc) => doc.data()).toList();
+  }
+
+  // add word
+  Future<void> insertWordFirebase(Word word) async {
+    await _wordFireStore!.insertWord(word);
+  }
+
+  // search word
+  Future<List<Word>> searchWordsFirebase(String word) async {
+    QuerySnapshot<Word> words = await _wordFireStore!.searchWords(word);
+    return words.docs.map((doc) => doc.data()).toList();
+  }
+
+  // delete word
+  Future<void> deleteWordFirebase(String id) async {
+    await _wordFireStore!.deleteWord(id);
+  }
+
+  // update word
+  Future<void> insertWordWithId(Word word, String id) async {
+    await _wordFireStore!.insertWordWithId(word, id);
   }
 
 }
