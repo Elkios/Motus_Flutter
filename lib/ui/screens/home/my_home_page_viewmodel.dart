@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:motus_flutter/data/entities/game/game.dart';
 import 'package:motus_flutter/data/entities/word/word.dart';
 import 'package:motus_flutter/data/repositories/game_repositories.dart';

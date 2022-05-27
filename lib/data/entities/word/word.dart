@@ -18,4 +18,14 @@ class Word {
   int wordLength() => _word?.length ?? 0;
 
   List<String> toCharsList() => _word?.split('') ?? [];
+
+  Word.fromJson(Map<String, Object?> json)
+    : this(json['id']! as int, json['word']! as String);
+
+  Map<String, int?> toJson(){
+    return{
+      'id': id,
+      'word':word,
+    };
+  }
 }
