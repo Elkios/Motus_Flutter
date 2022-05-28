@@ -246,7 +246,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       const Padding(padding: EdgeInsets.only(top: 40)),
                       KeyboardWidget(
-                        onKeyPressed: viewModel.onKeyboardKeyPressed
+                        onKeyPressed: viewModel.onKeyboardKeyPressed,
+                        overlay: viewModel.game!.getKeyboardOverlay(),
                       )
                     ]);
                   }

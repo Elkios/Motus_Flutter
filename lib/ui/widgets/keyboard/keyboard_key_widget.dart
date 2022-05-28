@@ -18,7 +18,7 @@ extension KeyStateExtension on KeyState {
       case KeyState.semivalid:
         return Colors.orange;
       case KeyState.invalid:
-        return Colors.transparent;
+        return Colors.blueGrey;
       case KeyState.unused:
         return Colors.transparent;
       default:
