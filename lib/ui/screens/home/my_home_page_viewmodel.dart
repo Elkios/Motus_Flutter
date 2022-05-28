@@ -27,12 +27,16 @@ class MyHomeViewModel with ChangeNotifier {
 
   User? _currentUser;
 
+  bool _isLoading = false;
+
   Future<void> loadDictionary() async {
     WordRepository repository = await WordRepository.getInstance();
     _list = await repository.loadWords();
   }
 
   Future<void> loadGame() async {
+    if(_isLoading) return;
+    _isLoading = true;
     UserRepository userRepository = UserRepository.getInstance();
     User? user = userRepository.getCurrentUser();
     if(_currentUser == user) {
@@ -49,7 +53,10 @@ class MyHomeViewModel with ChangeNotifier {
       _game?.word = getRandomWord();
       _currentInput = _game!.word!.word[0];
       updateGame();
+    }else {
+      _currentInput = _game!.word!.word[0];
     }
+    _isLoading = false;
     notifyListeners();
   }
 
