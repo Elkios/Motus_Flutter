@@ -161,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               tryWord: Try(
                                   'goodWordTry',
                                   limitedGame.word!.word,
-                                  List.generate(limitedGame.tries!.length,
+                                  List.generate(limitedGame.word!.wordLength(),
                                       (index) => LetterState.valid))),
                           const Padding(padding: EdgeInsets.all(20)),
                           Wrap(
