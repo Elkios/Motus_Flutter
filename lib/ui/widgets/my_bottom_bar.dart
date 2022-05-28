@@ -1,9 +1,7 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:motus_flutter/ui/screens/signin_and_signup/sign_in_and_sign_up_page_viewmodel.dart';
-import '../../data/repositories/user_repositories.dart';
 import 'package:provider/provider.dart';
-import '../screens/home/my_home_page_viewmodel.dart';
 
 class MyBottomBar extends StatefulWidget {
   const MyBottomBar({Key? key, required this.context}) : super(key: key);
@@ -22,11 +20,6 @@ class MyBottomBarState extends State<MyBottomBar> {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Accueil',
-          backgroundColor: Colors.red,
-        ),
         BottomNavigationBarItem(
           icon: Icon(Icons.games),
           label: 'Jouer',
@@ -49,7 +42,7 @@ class MyBottomBarState extends State<MyBottomBar> {
   Future<void> onTapHandler(int index) async {
     SignInAndSignUpPageViewModel viewModel =
         context.read<SignInAndSignUpPageViewModel>();
-    if (index == 3) {
+    if (index == 2) {
       await viewModel.logout();
       context.beamToNamed('/');
     }
