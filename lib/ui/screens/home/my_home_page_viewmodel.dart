@@ -22,9 +22,6 @@ class MyHomeViewModel with ChangeNotifier {
   String _currentInput = '';
   String get currentInput => _currentInput;
 
-  final List<String> _tries = [];
-  List<String> get tries => _tries;
-
   User? _currentUser;
 
   bool _isLoading = false;
@@ -68,7 +65,6 @@ class MyHomeViewModel with ChangeNotifier {
   addTry() async {
     stdout.writeln('[DEBUG] Check current input : $currentInput');
     if (checkWordExist(currentInput)) {
-      tries.add(currentInput);
       Try userTry = checkTry(_game!.word!, currentInput);
       stdout.writeln('[INFO] Try: ${userTry.lettersState}');
       _game!.tries?.add(userTry);
